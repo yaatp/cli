@@ -9,6 +9,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation
 :pencil: - chore
 
+## 2.0.1
+- :rocket: adjust dependencies
+
 ## 2.0.0
 - :rocket: package renamed to @qavajs/core
 - :rocket: added _value_ parameter type
