@@ -26,7 +26,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^11.0.1",
     "@qavajs/memory": "^1.9.0",
     "@qavajs/validation": "^0.10.0",
     "@swc/core": "^1.7.36",
@@ -34,6 +33,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^11.0.1",
     "@types/node": "^22.7.6",
     "@types/yargs": "^17.0.33",
     "@vitest/coverage-v8": "^2.1.3",
