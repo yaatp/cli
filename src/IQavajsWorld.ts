@@ -1,5 +1,10 @@
 import { DataTable, IWorld } from '@cucumber/cucumber';
-import { Validation } from './load';
+
+export interface Validation {
+    (AR: any, ER: any): void;
+    type: string;
+    poll: (AR: any, ER: any, options?: {timeout?: number, interval?: number}) => Promise<unknown>
+}
 
 export interface IQavajsWorld extends IWorld {
     getValue(expression: string): Promise<any>;
