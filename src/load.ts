@@ -9,7 +9,7 @@ import {
 import memory from '@qavajs/memory';
 import { getValidation, getPollValidation } from '@qavajs/validation';
 import importConfig from './importConfig';
-import { IQavajsWorld } from './IQavajsWorld';
+import { IQavajsWorld, Validation } from './IQavajsWorld';
 
 const configPath = process.env.CONFIG as string;
 const profile = process.env.PROFILE as string;
@@ -56,12 +56,6 @@ export class MemoryValue {
    * url.set('https://qavajs.github.io/')
    */
   set(value: any): void { memory.setValue(this.expression, value); }
-}
-
-export interface Validation {
-  (AR: any, ER: any): void;
-  type: string;
-  poll: (AR: any, ER: any, options?: {timeout?: number, interval?: number}) => Promise<unknown>
 }
 
 function transformString(fn: (value: string) => any) {
