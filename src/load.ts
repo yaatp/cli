@@ -30,24 +30,24 @@ export async function executeStep(this: any, text: string, extraParam?: DataTabl
   }
 }
 
-function setValue(key: string, value: any): void {
-  memory.setValue(key, value);
+function setValue(this: IQavajsWorld, key: string, value: any): void {
+  this.memory.setValue(key, value);
 }
 
-async function getValue(expression: string): Promise<any> {
-  return memory.getValue(expression);
+function getValue(this: IQavajsWorld, expression: string): any {
+  return this.memory.getValue(expression);
 }
 
 export class MemoryValue {
-  constructor(public expression: string) {}
+  constructor(public world: IQavajsWorld, public expression: string) {}
 
   /**
    * Return resolved value
    * @example
    * url.value()
-   * @return Promise<any>
+   * @return any
    */
-  value() { return memory.getValue(this.expression) }
+  value() { return this.world.getValue(this.expression) }
 
   /**
    * Set value to memory with provided key
@@ -55,7 +55,7 @@ export class MemoryValue {
    * @example
    * url.set('https://qavajs.github.io/')
    */
-  set(value: any): void { memory.setValue(this.expression, value); }
+  set(value: any): void { this.world.setValue(this.expression, value); }
 }
 
 function transformString(fn: (value: string) => any) {
@@ -68,7 +68,12 @@ function transformString(fn: (value: string) => any) {
 defineParameterType({
   name: 'value',
   regexp: /"([^"\\]*(\\.[^"\\]*)*)"|'([^'\\]*(\\.[^'\\]*)*)'/,
-  transformer: transformString(expression => new MemoryValue(expression)),
+  transformer: function(this: IQavajsWorld, s1, s2) {
+    const world = this;
+    return transformString(expression => {
+      return new MemoryValue(world, expression);
+    })(s1, s2)
+  }
 });
 
 defineParameterType({
@@ -96,6 +101,7 @@ Before({name: 'qavajs init'}, async function (this: IQavajsWorld, scenario) {
     memory.setLogger(this);
   }
   memory.register(Object.assign({}, ...memoryInstances, memoryValues));
+  this.memory = memory;
   this.executeStep = executeStep;
   this.getValue = getValue;
   this.setValue = setValue;

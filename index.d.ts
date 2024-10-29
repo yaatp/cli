@@ -63,7 +63,7 @@ export interface IQavajsWorld extends IWorld {
      * Get value from memory
      * @param {any} expression - expression to parse
      */
-    getValue(expression: any): Promise<any>;
+    getValue(expression: any): any;
 
     /**
      * Save value to memory
