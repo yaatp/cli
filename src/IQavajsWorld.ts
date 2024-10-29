@@ -8,7 +8,7 @@ export interface Validation {
 }
 
 export interface IQavajsWorld extends IWorld {
-    getValue(expression: string): Promise<any>;
+    getValue(expression: string): any;
     setValue(key: string, value: any): void;
     executeStep(step: string, extraParam?: DataTable | string): Promise<void>;
     validation(type: string): Validation;
