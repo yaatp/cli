@@ -9,6 +9,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation
 :pencil: - chore
 
+## 2.1.0
+- :rocket: added memory to world
+- :rocket: updated `world.getValue` and `world.setValue` to use bound memory
+
 ## 2.0.2
 - :beetle: fixed d.ts for new _MemoryValue_ and _Validation_ types
 
