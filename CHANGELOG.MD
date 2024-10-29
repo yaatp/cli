@@ -9,6 +9,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation
 :pencil: - chore
 
+## 2.1.1
+- :pencil: bump memory version
+
 ## 2.1.0
 - :rocket: added memory to world
 - :rocket: updated `world.getValue` and `world.setValue` to use bound memory
