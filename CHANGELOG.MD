@@ -1,17 +1,22 @@
 # Change Log
 
-All notable changes to the "@qavajs/cli" will be documented in this file.
+All notable changes to the "@qavajs/core" will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-:rocket: - new feature
-:beetle: - bugfix
-:x: - deprecation
-:pencil: - chore
+:rocket: - new feature  
+:beetle: - bugfix  
+:x: - deprecation/removal  
+:pencil: - chore  
+:microscope: - experimental
 
-## [Unreleased]
+## [unreleased]
+- :beetle: fixed publishing workflow
 - :pencil: updated dependencies
 
+## 2.0.0 
+- :rocket: added v2 implementation
+ 
 ## 0.40.0
 - :rocket: added config type definition
 - :rocket: changed label to @qavajs/cli
