@@ -1,13 +1,14 @@
 # Change Log
 
-All notable changes to the "@qavajs/cli" will be documented in this file.
+All notable changes to the "@qavajs/core" will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-:rocket: - new feature
-:beetle: - bugfix
-:x: - deprecation
-:pencil: - chore
+:rocket: - new feature  
+:beetle: - bugfix  
+:x: - deprecation/removal  
+:pencil: - chore  
+:microscope: - experimental
 
 ## 2.1.1
 - :pencil: bump memory version
@@ -26,7 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - :rocket: package renamed to @qavajs/core
 - :rocket: added _value_ parameter type
 - :rocket: added _validation_ parameter type
-
+ 
 ## 0.40.0
 - :rocket: added config type definition
 - :rocket: changed label to @qavajs/cli
