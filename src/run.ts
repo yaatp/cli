@@ -49,8 +49,8 @@ export async function run({runCucumber, loadConfiguration, loadSources, loadSupp
     process.env.PROFILE = argv.profile ?? 'default';
     process.env.MEMORY_VALUES = argv.memoryValues ?? '{}';
     process.env.CLI_ARGV = process.argv.join(' ');
-    const serviceHandler = new ServiceHandler(process.env.CONFIG as string, process.env.PROFILE as string);
     const config = await importConfig(process.env.CONFIG as string, process.env.PROFILE as string);
+    const serviceHandler = new ServiceHandler(config);
     const serviceTimeout = config.serviceTimeout ?? 60_000
     const timeoutMessage = `Service timeout '${serviceTimeout}' ms exceeded`;
     process.env.DEFAULT_TIMEOUT = config.defaultTimeout ?? 10_000;

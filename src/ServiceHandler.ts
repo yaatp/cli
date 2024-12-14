@@ -3,17 +3,14 @@ import importConfig from './importConfig';
 import { IRunResult } from '@cucumber/cucumber/api';
 
 export default class ServiceHandler {
-    private config: Promise<Config>;
     readonly services: Promise<Array<Service>>;
-    constructor(configPath: string, profile: string) {
-        this.config = importConfig(configPath, profile) as Promise<Config>;
+    constructor(private config: Config) {
         this.services = this.loadServices();
     }
 
     async loadServices() {
-        const config = await this.config;
-        if (!config.service) return [];
-        const services = config.service.map(async svcDef => {
+        if (!this.config.service) return [];
+        const services = this.config.service.map(async svcDef => {
             const svc = await svcDef;
             if (typeof svc === 'string') {
                 try {

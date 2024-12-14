@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2018",
     "module": "commonjs",
     "moduleResolution": "node16",
     "outDir": "./lib",
@@ -9,6 +9,6 @@
     "strict": true,
     "skipLibCheck": true,
     "allowJs": true,
-    "types": [",../modules/module.d.ts"]
+    "types": ["../modules/module.d.ts"]
   }
 }
