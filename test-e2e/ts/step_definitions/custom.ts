@@ -3,8 +3,7 @@ import { expect } from 'chai';
 import { Override } from '../../../utils';
 //@ts-ignore
 import moduleCJS from '../../modules/module.cjs';
-import {IQavajsWorld, Validation} from '../../../index';
-import { type MemoryValue } from "../../../src/load";
+import { IQavajsWorld, Validation, MemoryValue } from '../../../index';
 
 When('I do test', async function() {});
 

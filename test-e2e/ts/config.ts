@@ -1,6 +1,7 @@
 import Memory from './memory';
 import { IRunResult } from '@cucumber/cucumber/api';
 import { IQavajsConfig } from "../../index";
+import externalService from "./externalService";
 
 export default {
     unexpected: 32,
@@ -22,6 +23,9 @@ export default {
         after(result: IRunResult) {
             console.log(result.success);
         }
+    }, {
+        ...externalService,
+        options: { data: 42 }
     }],
     serviceTimeout: 20000
 } as IQavajsConfig;

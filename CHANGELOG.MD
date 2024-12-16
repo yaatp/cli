@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore  
 :microscope: - experimental
 
+## 2.1.2
+- :beetle: improved ServiceHandler to use existing config instead of re-reading
+
 ## 2.1.1
 - :pencil: bump memory version
 

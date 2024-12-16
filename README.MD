@@ -25,24 +25,36 @@ it will override $url memory value
 ### Service
 Services is an entities that can execute logic before and after whole test run.
 
-```javascript
-module.exports = {
-    default: {
-        service: [{
+```typescript
+import externalService from './externalService';
+
+export default {
+    service: [
+        {
+            options: {
+                data: 42
+            },
+            before() {
+                console.log(this.options.data);
+            },
             after(result) {
                 if (!result.success) process.exitCode = 1;
             }
-        }]
-    }
+        },
+        {
+            options: {
+                data: 42
+            },
+            ...externalService
+        }
+    ]
 }
 ```
 There is a one minute-long default timeout for a before and after test logic to prevent entire process from freezing.
 To set up a custom timeout in milliseconds use serviceTimeout property in the config file
-```javascript
-module.exports = {
-    default: {
-        serviceTimeout: 1_200_000
-    }
+```typescript
+export default {
+    serviceTimeout: 1_200_000
 }
 ```
 
@@ -50,12 +62,13 @@ module.exports = {
 All params that you passed to qavajs cli will be available in CLI_ARGV environment variable in all child workers.
 
 ### Override step definition
-```javascript
-const { Override } = require('@qavajs/core/utils');
 
-When('I do test', async function() {});
+```typescript
+import { Override } from '@qavajs/core/utils';
 
-Override('I do test', async function() {
+When('I do test', async function () {});
+
+Override('I do test', async function () {
     console.log('I am overridden');
 });
 ```
