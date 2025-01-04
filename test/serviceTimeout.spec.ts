@@ -1,7 +1,7 @@
 import {test, beforeEach, vi, expect} from 'vitest';
 import {run} from '../src/run';
 
-import importConfig from '../src/importConfig';
+import { importConfig } from '../src/importConfig';
 
 vi.mock('../src/importConfig');
 
