@@ -19,7 +19,7 @@ export async function importFile(path: string): Promise<any> {
 
 export async function importMemory(path: string): Promise<any> {
     const memoryInstance = await importFile(path);
-    return memoryInstance.default ? memoryInstance.default : memoryInstance.default;
+    return memoryInstance.default ?? memoryInstance;
 }
 
 export async function importConfig(configPath: string, profile: string): Promise<any> {
