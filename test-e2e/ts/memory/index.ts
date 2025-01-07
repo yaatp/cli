@@ -1,3 +1,7 @@
-export default class Constants {
+export class Constants {
     customValue = 'ts';
+}
+
+export default {
+    customValue: 'ts'
 }

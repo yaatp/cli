@@ -1,3 +1,5 @@
-module.exports = class Constants {
+class Constants {
     customValue = 'cjs';
 }
+
+module.exports = new Constants();

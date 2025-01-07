@@ -1,4 +1,4 @@
-import {IConfiguration, IRunResult} from '@cucumber/cucumber/api';
+import { IConfiguration, IRunResult } from '@cucumber/cucumber/api';
 
 export interface IQavajsConfig extends Partial<IConfiguration> {
     /**

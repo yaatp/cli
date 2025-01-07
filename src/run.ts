@@ -1,6 +1,6 @@
 import ServiceHandler from './ServiceHandler';
 import { resolve } from 'node:path';
-import importConfig from './importConfig';
+import { importConfig } from './importConfig';
 import { IPlannedPickle, IRunResult } from '@cucumber/cucumber/api';
 import { cliOptions } from './cliOptions';
 import { existsSync } from 'node:fs';

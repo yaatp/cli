@@ -8,9 +8,8 @@ import {
 
 import memory from '@qavajs/memory';
 import { getValidation, getPollValidation } from '@qavajs/validation';
-import importConfig from './importConfig';
+import { importConfig, importMemory } from './importConfig';
 import { IQavajsWorld, Validation } from './IQavajsWorld';
-
 const configPath = process.env.CONFIG as string;
 const profile = process.env.PROFILE as string;
 const config = importConfig(configPath, profile);
@@ -88,7 +87,10 @@ defineParameterType({
   useForSnippets: false
 });
 
-
+async function getMemoryInstances(config: { memory?: Object | string }) {
+  const memoryObject = typeof config.memory === 'string' ? await importMemory(config.memory) : config.memory;
+  return Array.isArray(memoryObject) ? memoryObject : [memoryObject];
+}
 /**
  * Basic initialization hook
  */
@@ -96,7 +98,7 @@ Before({name: 'qavajs init'}, async function (this: IQavajsWorld, scenario) {
   process.env.CURRENT_SCENARIO_NAME = scenario.pickle.name;
   this.config = await config;
   this.config.memory = this.config.memory ?? [];
-  const memoryInstances = Array.isArray(this.config.memory) ? this.config.memory : [this.config.memory];
+  const memoryInstances = await getMemoryInstances(this.config);
   if (memory.setLogger) {
     memory.setLogger(this);
   }

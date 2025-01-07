@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore  
 :microscope: - experimental
 
+## 2.2.0
+- :rocket: added capability to pass memory path as string
+
 ## 2.1.2
 - :beetle: improved ServiceHandler to use existing config instead of re-reading
 
