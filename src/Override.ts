@@ -1,4 +1,4 @@
-import {defineStep, supportCodeLibraryBuilder} from '@cucumber/cucumber';
+import { defineStep, supportCodeLibraryBuilder } from '@cucumber/cucumber';
 
 export function Override(pattern: string | RegExp, ...rest: any[]): void {
     // @ts-ignore

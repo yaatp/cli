@@ -1,5 +1,4 @@
-const { When, DataTable } = require('@cucumber/cucumber');
-const { Override } = require('../../../utils');
+const { Override, When, DataTable } = require('../../../index');
 const { expect } = require('chai');
 
 When('I do test', async function() {});

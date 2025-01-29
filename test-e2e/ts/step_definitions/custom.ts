@@ -1,6 +1,5 @@
-import { DataTable, When } from '@cucumber/cucumber';
+import { DataTable, When, Override } from '../../../index';
 import { expect } from 'chai';
-import { Override } from '../../../utils';
 //@ts-ignore
 import moduleCJS from '../../modules/module.cjs';
 import { IQavajsWorld, Validation, MemoryValue } from '../../../index';

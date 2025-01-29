@@ -1,6 +1,5 @@
-import {DataTable, When} from '@cucumber/cucumber';
+import { DataTable, When, Override } from '../../../index.mjs';
 import { expect } from 'chai';
-import {Override} from '../../../utils.js';
 import moduleESM from '../../modules/module.mjs';
 import moduleCJS from '../../modules/module.cjs';
 
