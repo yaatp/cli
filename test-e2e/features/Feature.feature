@@ -32,3 +32,7 @@ Feature: Feature
 
   Scenario: validation type
     When I expect '1' to equal '1'
+
+  @testFixture
+  Scenario: fixture
+    When I expect '$valueFromFixture' to equal 'qavajsFixture'

@@ -11,6 +11,31 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :microscope: - experimental
 
 ## 2.2.0
+- :rocket: added capability to define `Fixture`
+```typescript
+import { Fixture } from '@qavajs/core';
+
+Fixture('pdp', async function() {
+    await this.playwright.page.goto('https://my-site/pdp');
+    // fixture may return function that will be executed after test
+    return async function() {
+        await this.playwright.page.request.get('/cleanCart');
+    }
+});
+```
+
+```gherkin
+Feature: feature with fixture
+
+  @pdp
+  Scenario: scenario with fixture
+    When I click 'qavajs T-shirt'
+    And I click 'cart icon'
+    Then I expect 'qavajs T-shirt cart item' to be visible
+```
+- :rocket: added re-export of CucumberJS entities like When, Then, etc...
+
+## 2.2.0
 - :rocket: added capability to pass memory path as string
 
 ## 2.1.2

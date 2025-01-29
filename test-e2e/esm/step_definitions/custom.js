@@ -1,7 +1,15 @@
-import { DataTable, When, Override } from '../../../index.mjs';
+import { DataTable, When, Override, Fixture } from '../../../index.mjs';
 import { expect } from 'chai';
 import moduleESM from '../../modules/module.mjs';
 import moduleCJS from '../../modules/module.cjs';
+
+Fixture('testFixture', async function() {
+    console.log('setup test fixture');
+    this.memory.setValue('valueFromFixture', 'qavajsFixture');
+    return function () {
+        console.log('teardown test fixture');
+    }
+});
 
 When('I do test', async function() {});
 
@@ -65,6 +73,6 @@ When('write {string} to {value} value', async function(value, key) {
     expect(this.memory.getValue('$'+key.expression)).to.equal(value);
 });
 
-When('I expect {string} {validation} {string}', async function(value1, validate, value2) {
-    validate(value1, value2);
+When('I expect {value} {validation} {value}', async function(value1, validate, value2) {
+    validate(value1.value(), value2.value());
 });
