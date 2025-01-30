@@ -1,9 +1,15 @@
-import { DataTable, When } from '@cucumber/cucumber';
+import { DataTable, When, Override, Fixture, IQavajsWorld, Validation, MemoryValue } from '../../../index';
 import { expect } from 'chai';
-import { Override } from '../../../utils';
 //@ts-ignore
 import moduleCJS from '../../modules/module.cjs';
-import { IQavajsWorld, Validation, MemoryValue } from '../../../index';
+
+Fixture('testFixture', async function(this: IQavajsWorld) {
+    console.log('setup test fixture');
+    this.memory.setValue('valueFromFixture', 'qavajsFixture');
+    return function () {
+        console.log('teardown test fixture');
+    }
+});
 
 When('I do test', async function() {});
 
@@ -69,6 +75,6 @@ When('write {string} to {value} value', async function(value: string, key: Memor
     expect(this.memory.getValue('$'+key.expression)).to.equal(value);
 });
 
-When('I expect {string} {validation} {string}', async function(value1: string, validate: Validation, value2: string) {
-    validate(value1, value2);
+When('I expect {value} {validation} {value}', async function(value1: MemoryValue, validate: Validation, value2: MemoryValue) {
+    validate(value1.value(), value2.value());
 });

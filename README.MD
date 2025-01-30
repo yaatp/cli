@@ -61,20 +61,8 @@ export default {
 ### Pass CLI params to workers
 All params that you passed to qavajs cli will be available in CLI_ARGV environment variable in all child workers.
 
-### Override step definition
-
-```typescript
-import { Override } from '@qavajs/core/utils';
-
-When('I do test', async function () {});
-
-Override('I do test', async function () {
-    console.log('I am overridden');
-});
-```
-
 ### Memory value parameter type
-_value_ parameter type provides API to access memory
+`value` parameter type provides API to access memory
 
 ```javascript
 When('Read memory {value}', async function(memoryValue) {
@@ -87,7 +75,7 @@ When('Set memory {value} as {string}', async function(memoryKey, value) {
 ```
 
 ### Validation parameter type
-_validation_ parameter type provides API to verify values by certain condition
+`validation` parameter type provides API to verify values by certain condition
 
 ```javascript
 When('I expect {string} {validation} {string}', async function(value1, validate, value2) {
@@ -128,3 +116,42 @@ Module extends CucumberJS world with additional entities
 | setValue    | function | set memory value                                 | `await this.setValue('key', 'value');`                             |
 | getValue    | function | get memory value or expression                   | `await this.getValue('$key');`                                     |
 | validation  | function | get validation function based                    | `await this.getValue('to equal');`                                 |
+
+### Override step definition
+`Override` function provides capability to override step implementation and avoid ambiguous exception
+
+```typescript
+import { Override } from '@qavajs/core';
+
+When('I do test', async function () {});
+
+Override('I do test', async function () {
+    console.log('I am overridden');
+});
+```
+
+### Fixture
+`Fixture` provides convenient way to prepare test environment for specific test.
+
+This example will open pdp page before test and clean cart after test
+```typescript
+import { Fixture } from '@qavajs/core';
+
+Fixture('pdp', async function() {
+    await this.playwright.page.goto('https://my-site/pdp');
+    // fixture may return function that will be executed after test
+    return async function() {
+        await this.playwright.page.request.get('/cleanCart');
+    }
+});
+```
+
+```gherkin
+Feature: feature with fixture
+
+  @pdp
+  Scenario: scenario with fixture
+    When I click 'qavajs T-shirt'
+    And I click 'cart icon'
+    Then I expect 'qavajs T-shirt cart item' to be visible
+```
