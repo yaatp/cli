@@ -10,8 +10,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore  
 :microscope: - experimental
 
-## 2.2.0
-- :rocket: added capability to define `Fixture`
+## 2.3.0
+- :microscope: added capability to define `Fixture`
 ```typescript
 import { Fixture } from '@qavajs/core';
 
