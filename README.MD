@@ -155,3 +155,15 @@ Feature: feature with fixture
     And I click 'cart icon'
     Then I expect 'qavajs T-shirt cart item' to be visible
 ```
+
+### Template
+`Template` provides a way to define step definition using Gherkin language
+
+```typescript
+import { When, Template } from '@qavajs/core';
+
+When('I click {string} and verify {string}', Template((locator, expected) => `
+    I click '${locator}'
+    I expect '${locator} > Value' to equal '${expected}'
+`));
+```

@@ -1,4 +1,13 @@
-import { DataTable, When, Override, Fixture, IQavajsWorld, Validation, MemoryValue } from '../../../index';
+import {
+    DataTable,
+    When,
+    Override,
+    Fixture,
+    IQavajsWorld,
+    Validation,
+    MemoryValue,
+    Template
+} from '../../../index';
 import { expect } from 'chai';
 //@ts-ignore
 import moduleCJS from '../../modules/module.cjs';
@@ -78,3 +87,8 @@ When('write {string} to {value} value', async function(value: string, key: Memor
 When('I expect {value} {validation} {value}', async function(value1: MemoryValue, validate: Validation, value2: MemoryValue) {
     validate(value1.value(), value2.value());
 });
+
+When('I click {string} and verify {string}', Template((locator: string, expected: string) => `
+    I expect '${expected}' to equal '42'
+    I expect '42' to equal '${expected}'
+`));

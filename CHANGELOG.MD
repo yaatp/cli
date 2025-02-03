@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore  
 :microscope: - experimental
 
+## [Unreleased]
+- :microscope: added capability to define `Template`
+
 ## 2.3.0
 - :microscope: added capability to define `Fixture`
 ```typescript

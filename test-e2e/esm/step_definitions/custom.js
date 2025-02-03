@@ -1,4 +1,4 @@
-import { DataTable, When, Override, Fixture } from '../../../index.mjs';
+import { DataTable, When, Override, Fixture, Template } from '../../../index.mjs';
 import { expect } from 'chai';
 import moduleESM from '../../modules/module.mjs';
 import moduleCJS from '../../modules/module.cjs';
@@ -76,3 +76,8 @@ When('write {string} to {value} value', async function(value, key) {
 When('I expect {value} {validation} {value}', async function(value1, validate, value2) {
     validate(value1.value(), value2.value());
 });
+
+When('I click {string} and verify {string}', Template((locator, expected) => `
+    I expect '${expected}' to equal '42'
+    I expect '42' to equal '${expected}'
+`));
