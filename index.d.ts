@@ -3,6 +3,7 @@ import { DataTable, IWorld, When } from '@cucumber/cucumber';
 import { IConfiguration, IRunResult } from '@cucumber/cucumber/api';
 export const Override: typeof When;
 export { Fixture } from 'src/Fixture';
+export { Template } from 'src/Template';
 
 /**
  * Validation function

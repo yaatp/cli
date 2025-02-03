@@ -1,4 +1,4 @@
-const { Override, Fixture, When, DataTable } = require('../../../index');
+const { Template, Override, Fixture, When, DataTable } = require('../../../index');
 const { expect } = require('chai');
 
 Fixture('testFixture', async function() {
@@ -80,3 +80,8 @@ When('write {string} to {value} value', async function(value, key) {
 When('I expect {value} {validation} {value}', async function(value1, validate, value2) {
     validate(value1.value(), value2.value());
 });
+
+When('I click {string} and verify {string}', Template((locator, expected) => `
+    I expect '${expected}' to equal '42'
+    I expect '42' to equal '${expected}'
+`));
